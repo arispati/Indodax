@@ -1,0 +1,40 @@
+{
+    "name": "arispati/indodax",
+    "description": "Indodax API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aris",
+            "email": "masarispati@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3.1|^7.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Arispati\\Indodax\\": "src"
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.0",
+        "phpunit/phpunit": "^8.5"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Arispati\\Indodax\\Provider\\IndodaxServiceProvider"
+            ]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+          "Arispati\\Indodax\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit tests"
+    }
+}
