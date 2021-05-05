@@ -4,6 +4,7 @@ namespace Arispati\Indodax\Tests\Feature;
 
 use Arispati\Indodax\Indodax;
 use Arispati\Indodax\Tests\TestCase;
+use Illuminate\Support\Facades\Config;
 
 class IndodaxTest extends TestCase
 {
@@ -45,5 +46,23 @@ class IndodaxTest extends TestCase
     public function testGetDepth()
     {
         $this->assertIsObject(Indodax::getDepth('btcidr'));
+    }
+
+    public function testConnectionTimeout()
+    {
+        $this->expectException(\GuzzleHttp\Exception\ConnectException::class);
+
+        Config::set('indodax.uri', 'https://indodaxs.com');
+
+        Indodax::getServerTime();
+    }
+
+    public function testTimeout()
+    {
+        $this->expectException(\GuzzleHttp\Exception\ConnectException::class);
+
+        Config::set('indodax.timeout', 0.01);
+
+        Indodax::getSummaries();
     }
 }

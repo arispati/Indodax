@@ -27,7 +27,9 @@ class Client
     private static function guzzle()
     {
         return new GuzzleClient([
-            'base_uri' => config('indodax.uri')
+            'base_uri' => config('indodax.uri'),
+            'connect_timeout' => config('indodax.connect_timeout'),
+            'timeout' => config('indodax.timeout')
         ]);
     }
 
